@@ -25,72 +25,72 @@ The main file contains initialization for other files, launches the second threa
 The display file contains the display class.
 
 Constants:
-    * text_buffer: The buffer between the text and the top of its bar
-    * left_buffer: The buffer between the text and the left side of the screen
-    * bar_height: The height of each text bar
-    * num_items_per_page: Number of items shown at once in a menu.
-        Should typically be around (Screen Height / bar_height) - 1
+* text_buffer: The buffer between the text and the top of its bar
+* left_buffer: The buffer between the text and the left side of the screen
+* bar_height: The height of each text bar
+* num_items_per_page: Number of items shown at once in a menu.
+     Should typically be around (Screen Height / bar_height) - 1
     
 Initialization:
-    * Sda: int value of SDA pin
-    * Scl: int value of SCL pin
-    * i2cType: int value of I2C type. 0 or 1 for the RP2040
+* Sda: int value of SDA pin
+* Scl: int value of SCL pin
+* i2cType: int value of I2C type. 0 or 1 for the RP2040
     
 setMenu:
-    Set a menu to display. Automatically updates the display.
-    * newMenu: pre-defined menu object
+Set a menu to display. Automatically updates the display.
+* newMenu: pre-defined menu object
     
 update:
     Writes current menu onto the screen, and highlights current selection.
     
 scroll:
-    Shifts current selection.
-    * dir: int value, 1=scroll down, -1=scroll up
+Shifts current selection.
+* dir: int value, 1=scroll down, -1=scroll up
     
 click:
-    Executes lambda method linked to current selection.
+Executes lambda method linked to current selection.
     
 back:
-    Returns either to the menu's origin, or to the home page if in the main menu.
+Returns either to the menu's origin, or to the home page if in the main menu.
     
 update_home:
-    Writes home screen to display
-    * val: int value for brightness
-    * hue: int value for hue
-    * mode: str value for current mode name
+Writes home screen to display
+* val: int value for brightness
+* hue: int value for hue
+* mode: str value for current mode name
 
 
-#Menu.py
+# Menu.py
 The menu file contains the menu and menu_item objects.
     
 Menu initialization:
-    * Name: str value for menu name
-    * OG: Menu of origin, None if main menu.
-    * Loop: bool value for whether the selector loops around or sticks to the ends of the menu. Default False.
+* Name: str value for menu name
+* OG: Menu of origin, None if main menu.
+* Loop: bool value for whether the selector loops around or sticks to the ends of the menu. Default False.
     
 addItem:
-    Adds menu_item to menu
-    * item: menu_item to add
+Adds menu_item to menu
+* item: menu_item to add
     
 clickItem:
-    Wrapper for executing item function
-    * num: int index of menu item to execute
+Wrapper for executing item function
+* num: int index of menu item to execute
     
 getName:
-    Returns menu name
+Returns menu name
     
 getStrings:
-    Returns a list of all item names
+Returns a list of all item names
     
 menu_item initialization:
-    * name: string name
-    * func: lambda function to execute
+* name: string name
+* func: lambda function to execute
     
 getStr:
-    Returns item name
+Returns item name
     
 Click:
-    executes lambda function
+executes lambda function
 
 
 # LED_Modes.py
@@ -99,23 +99,23 @@ The current implementation is not final, and is subject to major changes in the 
 I have chosen against documenting the individual modes. Any function can be used as long as it takes an integer value as input and returns an integer value. Each mode handles its own iteration by reseting and returning the counter as needed.
 
 setMode:
-    Sets function to be executed by the runner
-    * func: function to execute.
+Sets function to be executed by the runner
+* func: function to execute.
     
 setVal:
-    Sets max brightness
-    * newVal: int value for brightness.
+Sets max brightness
+* newVal: int value for brightness.
     
 setHue:
-    Sets base hue
-    * newHue: int value for hue.
+Sets base hue
+* newHue: int value for hue.
     
 forceEnd:
-    breaks out of runner and allows for thread to be termintated in main
+breaks out of runner and allows for thread to be termintated in main
     
 getMode:
-    Returns current mode's name
+Returns current mode's name
     
 Runner:
-    Runs on second thread. While off, the program checks every 500 ms for updates.
-    Executes current mode every 10 ms
+Runs on second thread. While off, the program checks every 500 ms for updates.
+Executes current mode every 10 ms
