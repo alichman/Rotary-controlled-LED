@@ -12,7 +12,7 @@ class display:
     num_items_per_page = 3
     
     def __init__(self, Sda:int, Scl:int, i2cType: int):
-        i2c = I2C(0, sda=Pin(Sda), scl=Pin(Scl))
+        i2c = I2C(i2cType, sda=Pin(Sda), scl=Pin(Scl))
         self.screen = SSD1306_I2C(128, 64, i2c)
         self.cMenu = None
         self.cMenuStrings = []
