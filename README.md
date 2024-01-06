@@ -10,18 +10,18 @@ It also uses the user button on pin 24 as an in-program kill switch, as I've run
 the second thread doesn't halt no matter what. If you are not using the YD-RP2040, I recommend replacing the kill switch
 with your own button, or removing the section in main labeled " User button used as kill switch..." at the bottom.
 
-#Planned Rework
+# Planned Rework
 * Mode-saver will be implemented in the next update.
 * Depending on the saving method, the lighting modes may be reworked into a class-based solution.
 * Once the physical device is tested, example videos and STL files may be uploaded.
 * A text scroll feature may be implemented, but for now text that is too long will overflow off the side.
 
 
-#main.py
+# main.py
 The main file contains initialization for other files, launches the second thread, and runs the rotary encoder loop.
 
 
-#display.py
+# display.py
 The display file contains the display class.
 
 Constants:
@@ -93,7 +93,7 @@ Click:
     executes lambda function
 
 
-#LED_Modes.py
+# LED_Modes.py
 The LED_Modes file handles the LED writing, and contains the different modes for the LEDs.
 The current implementation is not final, and is subject to major changes in the coming updates.
 I have chosen against documenting the individual modes. Any function can be used as long as it takes an integer value as input and returns an integer value. Each mode handles its own iteration by reseting and returning the counter as needed.
